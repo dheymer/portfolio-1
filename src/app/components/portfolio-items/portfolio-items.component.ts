@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ProjectsService } from '../../services/projects.service';
 
 @Component({
   selector: 'app-portfolio-items',
@@ -8,11 +9,19 @@ import { ActivatedRoute } from '@angular/router';
 })
 export class PortfolioItemsComponent {
 
-  constructor( private route:ActivatedRoute ) {
+  project: any = undefined;
+
+  constructor( private route:ActivatedRoute,
+               private projectService: ProjectsService ) {
     route.params.subscribe( parameters => {
-      console.log(parameters);
-      console.log(parameters['id']);
-    });
+      //console.log(parameters);
+      //console.log(parameters['id']);
+      projectService.loadSingle( parameters['id'] )
+          .subscribe( data => {
+            this.project = data.json();
+            console.log( this.project);
+          })
+    })
   }
 
 }

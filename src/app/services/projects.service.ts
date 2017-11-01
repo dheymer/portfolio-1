@@ -10,6 +10,10 @@ export class ProjectsService {
     this.loadProjects();
   }
 
+  public loadSingle( id: string ){
+    return this.http.get(`https://portfolio-cb0c7.firebaseio.com/productos/${id}.json`);
+  }
+
   public loadProjects(){
     if (this.projects.length === 0){
       this.http.get('https://portfolio-cb0c7.firebaseio.com/productos_idx.json')
