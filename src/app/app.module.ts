@@ -16,6 +16,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { PortfolioComponent } from './components/portfolio/portfolio.component';
 import { AboutComponent } from './components/about/about.component';
 import { PortfolioItemsComponent } from './components/portfolio-items/portfolio-items.component';
+import { SearchComponent } from './components/search/search.component';
 
 @NgModule({
   declarations: [
@@ -24,7 +25,8 @@ import { PortfolioItemsComponent } from './components/portfolio-items/portfolio-
     FooterComponent,
     PortfolioComponent,
     AboutComponent,
-    PortfolioItemsComponent
+    PortfolioItemsComponent,
+    SearchComponent
   ],
   imports: [
     HttpModule,
