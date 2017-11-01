@@ -4,10 +4,19 @@ import { Http } from "@angular/http";
 @Injectable()
 export class ProjectsService {
   public projects: any[] = [];
+  public filteredProjects: any[] = [];
   public loadedProjects: boolean = false;
 
   constructor( public http:Http ) {
     this.loadProjects();
+  }
+
+  public searchProduct ( searchText:string){
+    console.log('Buscando producto');
+    console.log(this.projects.length);
+    this.projects.forEach(proj => {
+      console.log(proj);
+    })
   }
 
   public loadSingle( id: string ){
