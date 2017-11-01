@@ -26,7 +26,7 @@ export class InfoService {
   public loadAboutUs(){
       this.http.get('https://portfolio-cb0c7.firebaseio.com/equipo.json')
           .subscribe(data => {
-              console.log(data.json());
+              //console.log(data.json());
               this.team = data.json();
               this.loadedAbout = true;
           })
