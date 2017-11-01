@@ -15,8 +15,11 @@ export class ProjectsService {
       this.http.get('https://portfolio-cb0c7.firebaseio.com/productos_idx.json')
         .subscribe(data => {
           console.log(data.json());
-          this.projects = data.json();
-          this.loadedProjects = true;
+          setTimeout(() => {
+            this.projects = data.json();
+            this.loadedProjects = true;
+          }, 1000);
+
         })
       ;
     }
