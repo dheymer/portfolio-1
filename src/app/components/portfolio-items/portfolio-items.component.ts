@@ -10,17 +10,17 @@ import { ProjectsService } from '../../services/projects.service';
 export class PortfolioItemsComponent {
 
   project: any = undefined;
+  id: string = '';
 
   constructor( private route:ActivatedRoute,
                private projectService: ProjectsService ) {
     route.params.subscribe( parameters => {
-      //console.log(parameters);
-      //console.log(parameters['id']);
       projectService.loadSingle( parameters['id'] )
           .subscribe( data => {
             this.project = data.json();
+            this.id = parameters['id'];
             console.log( this.project);
-          })
+      })
     })
   }
 
