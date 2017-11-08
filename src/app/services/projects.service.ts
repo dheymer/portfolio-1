@@ -14,6 +14,16 @@ export class ProjectsService {
   public searchProduct ( searchText:string){
     console.log('Buscando producto');
     console.log(this.projects.length);
+    if (this.projects.length === 0){
+      this.loadProjects().then(() => {
+        this.filterProjects(searchText);
+      })
+    }else{
+      this.filterProjects(searchText);
+    }
+  }
+
+  private filterProjects(text : string){
     this.projects.forEach(proj => {
       console.log(proj);
     })
@@ -24,18 +34,20 @@ export class ProjectsService {
   }
 
   public loadProjects(){
-    if (this.projects.length === 0){
+    let promise = new Promise((resolve, reject) =>{
       this.http.get('https://portfolio-cb0c7.firebaseio.com/productos_idx.json')
-        .subscribe(data => {
-          //console.log(data.json());
-          setTimeout(() => {
-            this.projects = data.json();
-            this.loadedProjects = true;
-          }, 1000);
+          .subscribe(data => {
+            //console.log(data.json());
+            setTimeout(() => {
+              this.projects = data.json();
+              this.loadedProjects = true;
+              resolve();
+            }, 1000);
 
-        })
+          })
       ;
-    }
+    });
+    return promise;
   }
 
 }
