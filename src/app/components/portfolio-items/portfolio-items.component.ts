@@ -19,7 +19,7 @@ export class PortfolioItemsComponent {
           .subscribe( data => {
             this.project = data.json();
             this.id = parameters['id'];
-            console.log( this.project);
+            //console.log( this.project);
       })
     })
   }

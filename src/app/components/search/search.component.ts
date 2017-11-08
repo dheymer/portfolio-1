@@ -12,7 +12,7 @@ export class SearchComponent {
   constructor( private route:ActivatedRoute, public projService: ProjectsService) {
     route.params.subscribe(parameters => {
       this.searchText = parameters['item'];
-      console.log(this.searchText);
+      //console.log(this.searchText);
       projService.searchProduct(this.searchText);
     });
   }

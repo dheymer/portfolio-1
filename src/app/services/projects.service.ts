@@ -12,8 +12,8 @@ export class ProjectsService {
   }
 
   public searchProduct ( searchText:string){
-    console.log('Buscando producto');
-    console.log(this.projects.length);
+    //console.log('Buscando producto');
+    //console.log(this.projects.length);
     if (this.projects.length === 0){
       this.loadProjects().then(() => {
         this.filterProjects(searchText);
@@ -24,8 +24,13 @@ export class ProjectsService {
   }
 
   private filterProjects(text : string){
+    this.filteredProjects = [];
+    text = text.toLowerCase()
     this.projects.forEach(proj => {
-      console.log(proj);
+      //console.log(proj);
+      if (proj.categoria.indexOf(text) >= 0 || proj.titulo.toLowerCase().indexOf(text) >= 0){
+        this.filteredProjects.push( proj );
+      }
     })
   }
 
